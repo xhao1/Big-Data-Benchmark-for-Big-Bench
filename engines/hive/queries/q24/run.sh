@@ -12,7 +12,7 @@ TEMP_TABLE1="${TEMP_TABLE}_competitor_price_view"
 TEMP_TABLE2="${TEMP_TABLE}_self_ws_view"
 TEMP_TABLE3="${TEMP_TABLE}_self_ss_view"
 
-BINARY_PARAMS="$BINARY_PARAMS --hiveconf TEMP_TABLE1=$TEMP_TABLE1 --hiveconf TEMP_TABLE2=$TEMP_TABLE2 --hiveconf TEMP_TABLE3=$TEMP_TABLE3"
+BINARY_PARAMS+=(--hiveconf TEMP_TABLE1=$TEMP_TABLE1 --hiveconf TEMP_TABLE2=$TEMP_TABLE2 --hiveconf TEMP_TABLE3=$TEMP_TABLE3)
 
 query_run_main_method () {
 	QUERY_SCRIPT="$QUERY_DIR/$QUERY_NAME.sql"

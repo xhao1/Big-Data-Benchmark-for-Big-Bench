@@ -11,7 +11,7 @@ TEMP_TABLE1="${TEMP_TABLE}_sr_items"
 TEMP_TABLE2="${TEMP_TABLE}_wr_items"
 TEMP_TABLE3="${TEMP_TABLE}_return_items"
 
-BINARY_PARAMS="$BINARY_PARAMS --hiveconf TEMP_TABLE1=$TEMP_TABLE1 --hiveconf TEMP_TABLE2=$TEMP_TABLE2 --hiveconf TEMP_TABLE3=$TEMP_TABLE3"
+BINARY_PARAMS+=(--hiveconf TEMP_TABLE1=$TEMP_TABLE1 --hiveconf TEMP_TABLE2=$TEMP_TABLE2 --hiveconf TEMP_TABLE3=$TEMP_TABLE3)
 
 query_run_main_method () {
 	QUERY_SCRIPT="$QUERY_DIR/$QUERY_NAME.sql"
@@ -20,8 +20,6 @@ query_run_main_method () {
 		echo "SQL file $QUERY_SCRIPT can not be read."
 		exit 1
 	fi
-
-	local BINARY_PARAMS=" $BINARY_PARAMS"
 
 	runCmdWithErrorCheck runEngineCmd -f "$QUERY_SCRIPT"
 	return $?
